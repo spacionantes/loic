@@ -210,3 +210,117 @@ body { position: relative; }
   vertical-align: middle;
 }
 #hud-cursor { margin-left: auto; }
+
+/* ─── CANVAS / NEURAL BG ────────────────────────────────── */
+#neural {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── SWEEP TRANSITION ──────────────────────────────────── */
+#sweep {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: linear-gradient(90deg, transparent, var(--red-core) 40%, var(--orange-flash) 60%, transparent);
+  transform: translateX(-110%);
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ─── SECTIONS (shared) ─────────────────────────────────── */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: var(--nav-h) var(--sp-8) var(--sp-16);
+}
+
+/* ─── HERO ──────────────────────────────────────────────── */
+.section-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  padding-bottom: var(--hud-h);
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-6);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(5rem, 18vw, 18rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  background: linear-gradient(160deg, var(--ink) 40%, rgba(244,241,236,0.55));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  user-select: none;
+}
+
+.hero-sub {
+  color: var(--ink-dim);
+  letter-spacing: 0.2em;
+}
+
+.hero-credits {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  color: var(--ink-dim);
+}
+.credit-prefix { color: var(--signal); }
+.credit-rotator {
+  color: var(--ink);
+  min-width: 18ch;
+  text-align: left;
+  transition: opacity 0.3s;
+}
+
+/* scroll cue */
+.scroll-cue {
+  position: absolute;
+  bottom: calc(var(--hud-h) + var(--sp-8));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  color: var(--ink-dim);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px;
+  height: 3rem;
+  background: rgba(244,241,236,0.12);
+  overflow: hidden;
+}
+.scroll-line span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--signal);
+  animation: scroll-draw 1.8s var(--ease-signal) infinite;
+  transform: translateY(-100%);
+}
+@keyframes scroll-draw {
+  0%   { transform: translateY(-100%); }
+  60%  { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
