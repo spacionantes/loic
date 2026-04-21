@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#0A0A0B" />
+<title>BROOKE — Filmmaker / Director</title>
+<meta name="description" content="BROOKE — filmmaker & director working across music and culture. Signals, transmissions, and frames from Coachella, Boiler Room and beyond." data-i18n="meta.description" data-i18n-attr="content" />
+<meta property="og:title" content="BROOKE — Filmmaker / Director" />
+<meta property="og:description" content="Signals from the network. A cinematic portfolio." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/og.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,700;0,6..96,900;1,6..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "BROOKE",
+  "jobTitle": "Filmmaker / Director",
+  "address": { "@type": "PostalAddress", "addressLocality": "Nantes", "addressCountry": "FR" },
+  "sameAs": ["https://www.instagram.com/", "https://vimeo.com/"],
+  "knowsAbout": ["Direction", "Cinematography", "Editing", "Music Videos", "Live Capture"]
+}
+</script>
+</head>
+<body>
+  <!-- Neural flux background -->
+  <canvas id="neural" aria-hidden="true"></canvas>
+
+  <!-- Custom cursor node -->
+  <div id="cursor" aria-hidden="true">
+    <div class="cursor-node"></div>
+    <div class="cursor-ring"></div>
+  </div>
+  <canvas id="cursor-trail" aria-hidden="true"></canvas>
+
+  <!-- Transition sweep -->
+  <div id="sweep" aria-hidden="true"></div>
+
+  <!-- Accessibility: skip -->
+  <a href="#work" class="skip-link" data-i18n="skip.link">Skip to work</a>
+
+  <!-- Top nav -->
+  <header class="nav" role="banner">
+    <a href="#hero" class="nav-logo" aria-label="BROOKE — home">
+      <span class="logomark">B<em>·</em></span>
+      <span class="logotype">BROOKE</span>
+    </a>
+    <nav class="nav-links" role="navigation" aria-label="Primary">
+      <a href="#work"    data-nav data-i18n="nav.work">Work</a>
+      <a href="#reel"    data-nav data-i18n="nav.reel">Reel</a>
+      <a href="#about"   data-nav data-i18n="nav.about">About</a>
+      <a href="#clients" data-nav data-i18n="nav.clients">Clients</a>
+      <a href="#contact" data-nav data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="nav-meta">
+      <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+        <span class="lang-opt" data-lang-opt="en">EN</span>
+        <span class="lang-sep">/</span>
+        <span class="lang-opt" data-lang-opt="fr">FR</span>
+      </button>
+      <span class="status" aria-live="polite">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-text" data-i18n="status.available">AVAILABLE FOR COMMISSIONS</span>
+      </span>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="hero" class="section section-hero" data-node="00">
+      <div class="hero-inner">
+        <h1 class="hero-title" data-scramble>BROOKE</h1>
+        <p class="hero-sub mono" data-i18n="hero.sub">FILMMAKER / DIRECTOR — BASED IN NANTES</p>
+        <div class="hero-credits mono" aria-live="off">
+          <span class="credit-prefix" data-i18n="hero.signal">SIGNAL RELAY ·</span>
+          <span class="credit-rotator" id="credit-rotator" aria-hidden="true">COACHELLA</span>
+        </div>
+      </div>
+      <a href="#reel" class="scroll-cue" aria-label="Scroll down">
+        <span class="scroll-line"><span></span></span>
+        <span class="mono" data-i18n="hero.scroll">SCROLL · ENTER THE NETWORK</span>
+      </a>
+    </section>
+
+    <!-- REEL -->
+    <section id="reel" class="section section-reel" data-node="01">
+      <aside class="reel-sticky">
+        <span class="sticky-label">REEL</span>
+        <span class="sticky-year mono">/ 2026</span>
+      </aside>
+      <div class="reel-frame" data-reveal>
+        <video id="reel-video" autoplay muted loop playsinline preload="metadata" poster="assets/reel-poster.jpg">
+          <source src="assets/reel.mp4" type="video/mp4" />
+        </video>
+        <div class="reel-scan" aria-hidden="true"></div>
+        <button class="reel-sound" id="reel-sound" aria-label="Play reel with sound">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="20" r="3" fill="currentColor"/><path class="reel-sound-waves" d="M26 14c3 3 3 9 0 12M30 10c5 5 5 15 0 20" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+          <span class="mono" data-i18n="reel.sound">TRANSMIT · SOUND</span>
+        </button>
+      </div>
+      <div class="reel-meta mono">
+        <span>02:34 · 4K · DOLBY 5.1</span>
+        <span class="meta-sep">—</span>
+        <a href="#" class="link-signal" data-i18n="reel.press">DOWNLOAD PRESS KIT</a>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="section section-work" data-node="02">
+      <header class="section-head">
+        <span class="section-num mono">§ 02</span>
+        <h2 class="section-title" data-scramble data-i18n="work.title">SELECTED WORK</h2>
+        <p class="section-intro" data-i18n="work.intro">Transmissions captured in the field. Each node is a signal preserved from a moment that will not happen again.</p>
+      </header>
+
+      <div class="work-grid" id="work-grid">
+        <!-- cards injected by JS from projects data for easy extension -->
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section section-about" data-node="03">
+      <div class="about-portrait">
+        <div class="portrait-frame">
+          <div class="portrait-img" role="img" aria-label="Portrait of Brooke"></div>
+          <div class="portrait-scan" aria-hidden="true"></div>
+          <div class="portrait-duotone" aria-hidden="true"></div>
+        </div>
+        <div class="portrait-coords mono">
+          <span>LAT 47.2184° N</span>
+          <span>LON 01.5536° W</span>
+          <span data-i18n="about.node">NODE · BROOKE / 00</span>
+        </div>
+      </div>
+      <div class="about-body">
+        <span class="section-num mono">§ 03</span>
+        <h2 class="section-title" data-scramble data-i18n="about.title">THE OPERATOR</h2>
+        <div class="about-prose" data-i18n-html="about.prose">
+          <p>I film <em>what electricity looks like when it moves through a crowd</em>. Music, ritual, noise, light. My work lives where the shutter meets the synapse — the frames pulled from a set are the same frames that were about to be forgotten.</p>
+          <p>From Coachella main stages to basements wired by Boiler Room, I chase the exact millisecond a room realises it is alive. I work lean, with small teams, favoring proximity over polish. The camera is a sensor; the cut is a nerve.</p>
+          <p>Based in Nantes. Available worldwide.</p>
+        </div>
+        <ul class="about-skills mono" aria-label="Disciplines">
+          <li>DIRECTION</li><li>CINEMATOGRAPHY</li><li>EDIT</li><li>COLOR</li><li>SOUND DESIGN</li><li>LIVE CAPTURE</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section id="clients" class="section section-clients" data-node="04">
+      <header class="section-head section-head-inline">
+        <span class="section-num mono">§ 04</span>
+        <h2 class="section-title section-title-sm" data-scramble data-i18n="clients.title">SIGNAL PARTNERS</h2>
+      </header>
+      <div class="marquee" id="marquee">
+        <div class="marquee-track">
+          <!-- duplicated by JS for seamless loop -->
+          <span>COACHELLA</span><span>·</span>
+          <span>BOILER ROOM</span><span>·</span>
+          <span>SMOOTHRECORD</span><span>·</span>
+          <span>VIEILLES CHARRUES</span><span>·</span>
+          <span>RED BULL MUSIC</span><span>·</span>
+          <span>ARTE CONCERT</span><span>·</span>
+          <span>ED BANGER</span><span>·</span>
+          <span>BECAUSE MUSIC</span><span>·</span>
+          <span>NUITS SONORES</span><span>·</span>
+          <span>CERCLE</span><span>·</span>
+        </div>
+      </div>
+      <p class="clients-note" data-i18n="clients.note">Built in collaboration with the producers, crews and artists that keep the signal clean. Full credits inside each case file.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-contact" data-node="05">
+      <div class="contact-inner">
+        <span class="section-num mono">§ 05</span>
+        <h2 class="contact-title" data-scramble data-i18n="contact.title">LET'S TRANSMIT.</h2>
+        <div class="contact-channels">
+          <button class="contact-email link-signal" id="contact-email" data-email="hello@brooke.film">
+            <span class="mono-label" data-i18n="contact.email">EMAIL</span>
+            <span class="email-value">hello@brooke.film</span>
+            <span class="email-copied mono" data-i18n="contact.copied">SIGNAL COPIED ·</span>
+          </button>
+          <a class="contact-social link-signal" href="https://instagram.com/" target="_blank" rel="noopener">
+            <span class="mono-label">INSTAGRAM</span><span>@brooke.film</span>
+          </a>
+          <a class="contact-social link-signal" href="https://vimeo.com/" target="_blank" rel="noopener">
+            <span class="mono-label">VIMEO</span><span>/brookefilm</span>
+          </a>
+          <a class="contact-social link-signal" href="#" target="_blank" rel="noopener">
+            <span class="mono-label" data-i18n="contact.book">BOOK A CALL</span><span>cal.com/brooke</span>
+          </a>
+        </div>
+      </div>
+      <footer class="footer mono" role="contentinfo">
+        <span>© 2026 BROOKE · <span data-i18n="footer.rights">ALL SIGNALS RESERVED</span></span>
+        <span class="end-of-signal">
+          <span class="eos-dot" aria-hidden="true"></span>
+          <span data-i18n="footer.eos">END OF SIGNAL</span>
+        </span>
+        <span><span data-i18n="footer.built">BUILT WITH LIGHT</span> · NANTES</span>
+      </footer>
+    </section>
+  </main>
+
+  <!-- Project overlay (case study) -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="overlay-title">
+    <div class="overlay-bg" data-overlay-close></div>
+    <article class="overlay-panel">
+      <button class="overlay-close" data-overlay-close aria-label="Close">
+        <span></span><span></span>
+      </button>
+      <header class="overlay-head">
+        <span class="mono" id="overlay-node">NODE · —</span>
+        <h3 id="overlay-title" data-scramble>—</h3>
+        <dl class="overlay-meta mono">
+          <div><dt data-i18n="overlay.client">CLIENT</dt><dd id="overlay-client">—</dd></div>
+          <div><dt data-i18n="overlay.year">YEAR</dt><dd id="overlay-year">—</dd></div>
+          <div><dt data-i18n="overlay.format">FORMAT</dt><dd id="overlay-format">—</dd></div>
+          <div><dt data-i18n="overlay.role">ROLE</dt><dd id="overlay-role">—</dd></div>
+        </dl>
+      </header>
+      <div class="overlay-hero" id="overlay-hero"></div>
+      <div class="overlay-body">
+        <p id="overlay-desc" class="overlay-desc">—</p>
+        <div class="overlay-stills" id="overlay-stills"></div>
+        <div class="overlay-credits mono" id="overlay-credits"></div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Bottom HUD -->
+  <div class="hud mono" aria-hidden="true">
+    <span id="hud-time">00:00:00</span>
+    <span class="hud-sep">·</span>
+    <span id="hud-node">NODE 00 / HERO</span>
+    <span class="hud-sep">·</span>
+    <span id="hud-cursor">X 0000 · Y 0000</span>
+    <span class="hud-sep">·</span>
+    <span class="hud-pulse"><span class="hud-dot"></span> <span data-i18n="hud.uplink">UPLINK STABLE</span></span>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
