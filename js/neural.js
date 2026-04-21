@@ -139,27 +139,41 @@ export function initNeural() {
         const cdist  = Math.hypot(midX - mx, midY - my);
         const redMix = cdist < 220 ? (1 - cdist / 220) : 0;
 
-        const alpha  = ratio * (0.18 + redMix * 0.22);
-        // White → red interpolation: (200,200,200) → (184,0,31)
-        const rv = (200 + redMix * (-16)) | 0;
-        const gv = (200 - redMix * 200) | 0;
-        const bv = (200 - redMix * 169) | 0;
+        const alpha  = ratio * (0.5 + redMix * 0.4);
+        // White → vivid red interpolation
+        const rv = (220 - redMix * 36)  | 0;
+        const gv = (220 - redMix * 220) | 0;
+        const bv = (220 - redMix * 189) | 0;
 
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
         ctx.strokeStyle = `rgba(${rv},${gv},${bv},${alpha})`;
-        ctx.lineWidth   = 0.4 + ratio * 0.4;
+        ctx.lineWidth   = 0.5 + ratio * 0.7;
         ctx.stroke();
       }
     }
 
-    // ── Draw nodes ─────────────────────────────────────────────
+    // ── Draw nodes (glow halo + core) ─────────────────────────
     for (let i = 0; i < nodes.length; i++) {
       const n = nodes[i];
+      const cdist = Math.hypot(n.x - mouse.x, n.y - mouse.y);
+      const hot   = cdist < CFG.cursorRange ? (1 - cdist / CFG.cursorRange) : 0;
+
+      // Outer soft halo
       ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(244,241,236,0.55)';
+      ctx.arc(n.x, n.y, n.r * (4 + hot * 5), 0, Math.PI * 2);
+      ctx.fillStyle = hot > 0.1
+        ? `rgba(255,74,28,${0.07 + hot * 0.14})`
+        : `rgba(244,241,236,0.05)`;
+      ctx.fill();
+
+      // Core node
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r + hot * 2, 0, Math.PI * 2);
+      ctx.fillStyle = hot > 0.15
+        ? `rgba(255,107,53,${0.75 + hot * 0.25})`
+        : `rgba(244,241,236,0.85)`;
       ctx.fill();
     }
 
@@ -178,14 +192,20 @@ export function initNeural() {
 
       // Core dot
       ctx.beginPath();
-      ctx.arc(px, py, 2.2, 0, Math.PI * 2);
+      ctx.arc(px, py, 3, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(255,107,53,${fa})`;
       ctx.fill();
 
-      // Soft halo — single larger semi-transparent circle (no gradient alloc per frame)
+      // Bright inner flash
       ctx.beginPath();
-      ctx.arc(px, py, 7, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,107,53,${fa * 0.12})`;
+      ctx.arc(px, py, 1.2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,220,180,${fa * 0.9})`;
+      ctx.fill();
+
+      // Soft halo
+      ctx.beginPath();
+      ctx.arc(px, py, 12, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,74,28,${fa * 0.18})`;
       ctx.fill();
     }
   }
