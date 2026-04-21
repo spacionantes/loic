@@ -821,3 +821,102 @@ body { position: relative; }
   background: var(--red-bright);
   animation: pulse-dot 3.5s ease-in-out infinite;
 }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .status-text { display: none; }
+  .nav-toggle {
+    display: flex; flex-direction: column;
+    gap: 5px; padding: var(--sp-2);
+  }
+  .nav-toggle span {
+    display: block; width: 1.4rem; height: 1px;
+    background: var(--ink); transition: background var(--dur-fast);
+  }
+
+  .section-reel {
+    grid-template-columns: 1fr;
+  }
+  .reel-sticky {
+    writing-mode: horizontal-tb;
+    transform: none;
+    flex-direction: row;
+    position: static;
+    margin-bottom: var(--sp-4);
+  }
+
+  .section-head { grid-template-columns: 1fr; }
+  .section-num { display: none; }
+  .section-title { grid-column: 1; }
+  .section-intro { grid-column: 1; }
+
+  .work-grid { grid-template-columns: 1fr; gap: var(--sp-8); }
+  .project-card,
+  .project-card:nth-child(n) {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  .section-about { grid-template-columns: 1fr; gap: var(--sp-8); }
+  .about-portrait { position: static; }
+  .portrait-frame { aspect-ratio: 4 / 3; }
+
+  .contact-title { font-size: clamp(2.8rem, 12vw, 5rem); }
+
+  .footer { flex-direction: column; gap: var(--sp-3); }
+
+  .overlay-panel { width: 100%; border-left: none; padding: var(--sp-8) var(--sp-6) var(--sp-16); }
+
+  .hud { display: none; }
+}
+
+@media (max-width: 480px) {
+  .nav { padding: 0 var(--sp-4); }
+  .section { padding-left: var(--sp-4); padding-right: var(--sp-4); }
+  .hero-title { font-size: clamp(4rem, 20vw, 8rem); }
+  .contact-channels { gap: var(--sp-4); }
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  #neural { display: none; }
+
+  .scroll-line span,
+  .portrait-scan,
+  .marquee-track,
+  .status-dot,
+  .eos-dot,
+  .hud-dot { animation: none; }
+
+  .marquee-track { animation: none; overflow-x: auto; }
+
+  .card-filament { display: none; }
+  #sweep { display: none; }
+}
+
+/* ─── FOCUS STATES ───────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--orange-flash);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+.nav-links a:focus-visible,
+.lang-toggle:focus-visible,
+.reel-sound:focus-visible,
+.overlay-close:focus-visible,
+.contact-email:focus-visible,
+.contact-social:focus-visible {
+  outline: 2px solid var(--orange-flash);
+  outline-offset: 4px;
+}
+
+button:focus-visible { outline: 2px solid var(--orange-flash); outline-offset: 4px; }
+a:focus-visible      { outline: 2px solid var(--orange-flash); outline-offset: 3px; }
