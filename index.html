@@ -30,6 +30,9 @@
   <!-- Neural flux background -->
   <canvas id="neural" aria-hidden="true"></canvas>
 
+  <!-- Film grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
   <!-- Custom cursor node -->
   <div id="cursor" aria-hidden="true">
     <div class="cursor-node"></div>
@@ -74,7 +77,34 @@
     <!-- HERO -->
     <section id="hero" class="section section-hero" data-node="00">
       <div class="hero-inner">
-        <h1 class="hero-title" data-scramble>BROOKE</h1>
+        <h1 class="hero-title" aria-label="BROOKE">
+          <span aria-hidden="true">BR</span>
+          <span class="letter-circle" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <defs>
+                <filter id="rough-o-1">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3"/>
+                  <feDisplacementMap in="SourceGraphic" scale="5"/>
+                </filter>
+              </defs>
+              <ellipse cx="60" cy="60" rx="42" ry="44" stroke-width="11" filter="url(#rough-o-1)" transform="rotate(-4 60 60)"/>
+              <ellipse cx="60" cy="60" rx="39" ry="41" stroke-width="6"  filter="url(#rough-o-1)" transform="rotate(3 60 60)"/>
+            </svg>
+          </span>
+          <span class="letter-circle" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <defs>
+                <filter id="rough-o-2">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="11"/>
+                  <feDisplacementMap in="SourceGraphic" scale="4.5"/>
+                </filter>
+              </defs>
+              <ellipse cx="60" cy="60" rx="43" ry="42" stroke-width="10" filter="url(#rough-o-2)" transform="rotate(6 60 60)"/>
+              <ellipse cx="60" cy="60" rx="40" ry="40" stroke-width="5"  filter="url(#rough-o-2)" transform="rotate(-2 60 60)"/>
+            </svg>
+          </span>
+          <span aria-hidden="true">KE</span>
+        </h1>
         <p class="hero-sub mono" data-i18n="hero.sub">FILMMAKER / DIRECTOR — BASED IN NANTES</p>
         <div class="hero-credits mono" aria-live="off">
           <span class="credit-prefix" data-i18n="hero.signal">SIGNAL RELAY ·</span>
@@ -234,14 +264,11 @@
     </article>
   </div>
 
-  <!-- Bottom HUD -->
+  <!-- Bottom HUD (minimal) -->
   <div class="hud mono" aria-hidden="true">
     <span id="hud-time">00:00:00</span>
     <span class="hud-sep">·</span>
-    <span id="hud-node">NODE 00 / HERO</span>
-    <span class="hud-sep">·</span>
-    <span id="hud-cursor">X 0000 · Y 0000</span>
-    <span class="hud-sep">·</span>
+    <span id="hud-node">HERO</span>
     <span class="hud-pulse"><span class="hud-dot"></span> <span data-i18n="hud.uplink">UPLINK STABLE</span></span>
   </div>
 

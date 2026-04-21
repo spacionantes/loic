@@ -63,9 +63,9 @@ initProjects();
         a.toggleAttribute('aria-current', match);
       });
 
-      // HUD node label
-      document.getElementById('hud-node').textContent =
-        `NODE ${node} / ${nodeNames[node] ?? id.toUpperCase()}`;
+      // HUD node label (minimal, editorial)
+      const hudNode = document.getElementById('hud-node');
+      if (hudNode) hudNode.textContent = nodeNames[node] ?? id.toUpperCase();
 
       // Neural burst on node change
       if (node !== lastNode) {
@@ -97,28 +97,20 @@ initProjects();
   });
 })();
 
-// ── HUD: timecode + cursor coords ────────────────────────────
+// ── HUD: timecode only ───────────────────────────────────────
 (function initHUD() {
-  const hudTime   = document.getElementById('hud-time');
-  const hudCursor = document.getElementById('hud-cursor');
-  if (!hudTime && !hudCursor) return;
+  const hudTime = document.getElementById('hud-time');
+  if (!hudTime) return;
 
-  document.addEventListener('mousemove', e => {
-    if (hudCursor) {
-      hudCursor.textContent =
-        `X ${String(e.clientX).padStart(4,'0')} · Y ${String(e.clientY).padStart(4,'0')}`;
-    }
-  });
-
+  let last = '';
   function tick() {
-    if (hudTime) {
-      const d = new Date();
-      hudTime.textContent = [d.getHours(), d.getMinutes(), d.getSeconds()]
-        .map(n => String(n).padStart(2,'0')).join(':');
-    }
-    requestAnimationFrame(tick);
+    const d = new Date();
+    const next = [d.getHours(), d.getMinutes(), d.getSeconds()]
+      .map(n => String(n).padStart(2, '0')).join(':');
+    if (next !== last) { hudTime.textContent = next; last = next; }
+    setTimeout(tick, 1000);
   }
-  requestAnimationFrame(tick);
+  tick();
 })();
 
 // ── Hero credit rotator ───────────────────────────────────────
