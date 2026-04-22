@@ -100,6 +100,13 @@
     @apply border-border;
   }
 
+  /* Hide native cursor on pointer devices — CustomCursor takes over */
+  @media (hover: hover) and (pointer: fine) {
+    *, *::before, *::after {
+      cursor: none !important;
+    }
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Plus Jakarta Sans', sans-serif;
