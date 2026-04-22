@@ -106,16 +106,16 @@ const DevenirHote = () => {
                     </p>
                   </div>
 
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     {benefits.map((benefit, i) => (
                       <motion.div
                         key={benefit.title}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.1 * i, duration: 0.4 }}
-                        className="flex gap-4"
+                        className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm"
                       >
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
                           <benefit.icon className="h-6 w-6 text-primary" />
                         </div>
                         <div>
@@ -128,7 +128,7 @@ const DevenirHote = () => {
                 </div>
 
                 {/* Right – Form */}
-                <Card className="rounded-2xl shadow-sm">
+                <Card className="rounded-2xl shadow-md ring-1 ring-border/60">
                   <CardContent className="space-y-5 p-6 lg:p-8">
                     <div>
                       <h2 className="text-xl font-bold">Parlez-nous de votre espace</h2>
@@ -182,7 +182,7 @@ const DevenirHote = () => {
                     </div>
 
                     <Button
-                      className="w-full rounded-2xl py-6 text-base font-semibold"
+                      className="w-full rounded-2xl py-6 text-base font-semibold bg-gradient-to-r from-primary to-[hsl(270,60%,60%)] hover:opacity-90 transition-opacity border-0 shadow-lg shadow-primary/20"
                       disabled={!canSubmit}
                       onClick={handleSubmit}
                     >

@@ -1,7 +1,7 @@
 import { useEffect, useState, type ComponentType, Component, type ReactNode } from "react";
-import { ClipboardCheck, Lightbulb, Handshake, ArrowRight, Building2, Heart, ChevronDown } from "lucide-react";
+import { ClipboardCheck, Lightbulb, Handshake, ArrowRight, Building2, Heart, ChevronDown, CheckCircle } from "lucide-react";
 import { Typewriter } from "@/components/ui/typewriter-text";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
 import { useListings } from "@/hooks/useListings";
@@ -171,6 +171,23 @@ const Index = () => {
                 </motion.div>
                 }
             </div>
+
+            {/* Hero stats row */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/55"
+            >
+              <span className="flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                {spaces.length > 0 ? spaces.length : 14} espaces disponibles
+              </span>
+              <span className="hidden text-white/25 sm:inline">•</span>
+              <span>Gratuit pour les associations</span>
+              <span className="hidden text-white/25 sm:inline">•</span>
+              <span>Réponse sous 24h</span>
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -202,7 +219,7 @@ const Index = () => {
                 className="group relative w-full max-w-sm rounded-2xl border border-border bg-card p-8 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 lg:max-w-none">
                 
                 {/* Step number */}
-                <span className="absolute -top-4 left-6 inline-flex h-8 items-center rounded-full bg-primary px-3 text-xs font-bold text-primary-foreground shadow-sm">
+                <span className="absolute -top-4 left-6 inline-flex h-8 items-center rounded-full bg-gradient-to-r from-primary to-[hsl(270,60%,60%)] px-3 text-xs font-bold text-primary-foreground shadow-sm">
                   {step.number}
                 </span>
 
@@ -280,13 +297,19 @@ const Index = () => {
             <p className="mb-6 leading-relaxed text-muted-foreground text-base text-justify">
               Valorisez vos espaces inutilisés en les mettant à disposition d'acteurs de l’ESS. Gérez vos réservations, fixez vos prix et contribuez à la vie locale.
             </p>
-            <ul className="mb-6 space-y-2 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2">✓ Renforcez concrètement vos engagements RSE</li>
-              <li className="flex items-center gap-2">✓ Faites rayonner votre établissement</li>
-              <li className="flex items-center gap-2">✓ Optimisez vos coûts en mutualisant vos charges</li>
-              <li className="flex items-center gap-2">✓ Créez des synergies entre collaborateurs et bénéficiaires</li>
-              <li className="flex items-center gap-2">✓ Donnez vie à vos espaces inoccupés</li>
+            <ul className="mb-6 space-y-2.5 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Renforcez concrètement vos engagements RSE</li>
+              <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Faites rayonner votre établissement</li>
+              <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Optimisez vos coûts en mutualisant vos charges</li>
+              <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Créez des synergies entre collaborateurs et bénéficiaires</li>
+              <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Donnez vie à vos espaces inoccupés</li>
             </ul>
+            <Link
+              to="/devenir-hote"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+            >
+              Proposer mon espace <ArrowRight className="h-4 w-4" />
+            </Link>
           </motion.div>
 
           {/* Associations card */}
@@ -303,12 +326,18 @@ const Index = () => {
             <h3 className="mb-3 text-2xl font-bold">Associations</h3>
             <p className="mb-6 leading-relaxed text-muted-foreground text-base text-justify">Trouvez des espaces abordables et adaptés pour vos réunions, activités… Réservez en quelques clics et concentrez-vous sur l'essentiel.
               </p>
-            <ul className="mb-6 space-y-2 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2">✓ Trouvez rapidement un espace adapté à vos besoins</li>
-              <li className="flex items-center gap-2">✓ Réservez simplement, en quelques clics</li>
-              <li className="flex items-center gap-2">✓ Accédez à des tarifs solidaires et avantageux</li>
-              <li className="flex items-center gap-2">✓ Créez des synergies entre bénéficiaires et acteurs locaux</li>
+            <ul className="mb-6 space-y-2.5 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Trouvez rapidement un espace adapté à vos besoins</li>
+              <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Réservez simplement, en quelques clics</li>
+              <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Accédez à des tarifs solidaires et avantageux</li>
+              <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Créez des synergies entre bénéficiaires et acteurs locaux</li>
             </ul>
+            <Link
+              to="/explorer"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+            >
+              Trouver un espace <ArrowRight className="h-4 w-4" />
+            </Link>
           </motion.div>
         </div>
       </div>

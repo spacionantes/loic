@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,9 +11,10 @@ import {
 import logo from "@/assets/logo.png";
 
 const navLinkClass = (active: boolean) =>
-  `inline-flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground ${
+  cn(
+    "inline-flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
     active ? "bg-accent text-accent-foreground" : "text-muted-foreground"
-  }`;
+  );
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -46,7 +48,16 @@ const Header = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Link to="/explorer" className={navLinkClass(isActive("/explorer"))}>
+          {/* Primary CTA — always visually distinct */}
+          <Link
+            to="/explorer"
+            className={cn(
+              "inline-flex items-center gap-1 rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200",
+              isActive("/explorer")
+                ? "bg-primary text-primary-foreground shadow-md shadow-primary/25"
+                : "bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-md hover:shadow-primary/20"
+            )}
+          >
             Trouver un espace
           </Link>
 
@@ -91,7 +102,11 @@ const Header = () => {
 
             <div className="my-1 border-t border-border" />
 
-            <Link to="/explorer" className="rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent" onClick={() => setMobileOpen(false)}>
+            <Link
+              to="/explorer"
+              className="mx-2 my-1 rounded-xl bg-primary px-4 py-3 text-center text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+              onClick={() => setMobileOpen(false)}
+            >
               Trouver un espace
             </Link>
 
